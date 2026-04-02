@@ -2921,4 +2921,27 @@ console.log("create_timetable raw", data, typeof data);
 - 无中文文案，未改。
 
 若你希望 **数据库与 Worker 提示也全面英文化**，需要改 `schema.sql` / `run_on_cloud_once.sql` 里 `day` 的枚举与迁移数据，并同步 Worker 提示词；那是另一轮改动，可以单独说。
+I have translated the entire frontend interface and the underlying logic's user-facing messages into English.
 
+### Key Translation Updates
+
+* **User Interface (`index.html`)**: 
+    * The sidebar now displays "Import Schedule," "Visualization," and "Free Time & Voting".
+    * All configuration labels (e.g., "Supabase Config," "AI Proxy URL") and button texts are now in English.
+    * Placeholders and instructional text for the three main views are fully translated.
+* **Application Logic (`app.js`)**: 
+    * Status updates like "Uploading image...", "Config saved!", and "Login link sent" are now English.
+    * Error messages and alerts are translated for better clarity.
+    * The grid headers and CSV export headers now use `DAY_HEADERS_EN` (e.g., Time slot, Mon, Tue, etc.).
+* **Database Compatibility**: 
+    * Internally, `DAYS` and the normalization logic still output Chinese weekday names (e.g., "周一") when interacting with the database.
+    * This is a critical "Senior Developer" choice to ensure that your existing **Supabase `events.day`** constraints and the **AI Agent's** extraction logic do not break.
+
+### Functional Overview of the Three English Views
+
+1.  **Import Schedule**: Centralizes the Supabase/Worker configuration, login options (Email/Google), and the image upload/AI recognition interface.
+2.  **Visualization**: Shows the clean 30-minute interval grid where "Busy" and "Available" slots are displayed.
+3.  **Free Time & Voting**: Displays a static preview of the coordination features, allowing users to see where the system will eventually recommend common free slots.
+
+**Note for Next Steps**: 
+If you wish to move entirely to English within the database as well (e.g., changing the `ENUM` for `day` in Postgres and the prompt in the Cloudflare Worker), I can provide a migration script to update those components. Let me know if you'd like to proceed with that!
