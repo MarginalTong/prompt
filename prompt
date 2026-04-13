@@ -34,7 +34,6 @@ _Exported on 4/2/2026 at 18:43:12 GMT+11 from Cursor (2.6.21)_
 5. 点击“下载 CSV”
 
 ### 技术方案（免费）
-- OCR API：`https://api.ocr.space/parse/image`
 - 免费测试 key：`helloworld`
 - 前端纯静态页面，适合直接部署到 GitHub Pages / Netlify / Vercel（都可免费）
 
@@ -365,8 +364,6 @@ Live
 
 **User**
 
-我现在要把OCR替换成gemini3flash, API key. AIzaSyBOTefS0_t7YG_ut_9AdPOSZjlVc01hSm4
-
 ---
 
 **Cursor**
@@ -434,7 +431,6 @@ Live
 
 已改好，当前请求会走：
 
-`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?...`
 
 也就是你要求的 `models/gemini-3-flash`。
 
